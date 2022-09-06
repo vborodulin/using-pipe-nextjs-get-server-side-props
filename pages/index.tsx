@@ -32,13 +32,23 @@ const IndexPage: NextPage<TIndexPageProps> = (props) => {
   );
 };
 
+// Example with parallel piped functions execution
 export const getServerSideProps: GetServerSideProps = ssrHelpers.pipe(
-  ssrPipes.withAuth(),
+  ssrPipes.withAuth(), // 500ms
   // run two async piped function parallel to minimize fetching data time
-  ssrHelpers.pipesExecParallel(
-    ssrPipes.withSubscription(),
-    ssrPipes.withAlbums(),
+  ssrHelpers.pipesExecParallel( // 500ms in parallel execution
+    ssrPipes.withSubscription(), // 500ms
+    ssrPipes.withAlbums(), // 500ms
   ),
 );
+// total 1000ms
+
+// Example sequential execution
+// export const getServerSideProps: GetServerSideProps = ssrHelpers.pipe(
+//   ssrPipes.withAuth(), // 500ms delay
+//   ssrPipes.withSubscription(), // 500ms delay
+//   ssrPipes.withAlbums(), // 500ms delay
+// );
+// total 1500ms
 
 export default IndexPage;

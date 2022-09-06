@@ -34,7 +34,7 @@ const fetchSubscription = async (userId: number) => {
 
 const fetchAlbums = async (userId: number) => {
   // emulate async request
-  await delay(1000);
+  await delay(500);
 
   const albums: TAlbum[] = [
     {
@@ -58,7 +58,7 @@ const withAuth = (): TPipeGetServerSideProps => async (
 ) => {
   const user = await fetchUser();
 
-  // if user === null -> not auth
+  // if !user -> not auth
   // return notFound and break piped functions chain
   if (!user) {
     return {

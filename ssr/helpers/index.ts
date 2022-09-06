@@ -15,6 +15,8 @@ const pipe = (...fns: TPipeGetServerSideProps[]) => async (
   for await (const fn of fns) {
     res = await fn(context, res);
 
+    // it means we have notFound or redirect.
+    // We need to break our pipe and return this result immediately.
     if (!('props' in res)) {
       break;
     }
