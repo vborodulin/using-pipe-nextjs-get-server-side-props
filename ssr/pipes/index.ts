@@ -54,7 +54,7 @@ const fetchAlbums = async (userId: number) => {
 
 // we can pass arg as options to piped function
 const withAuth = (): TPipeGetServerSideProps => async (
-  _, input
+  context, input
 ) => {
   const user = await fetchUser();
 
@@ -77,7 +77,7 @@ const withAuth = (): TPipeGetServerSideProps => async (
 
 // we can pass arg as options to piped function
 const withSubscription = (): TPipeGetServerSideProps => async (
-  _, input
+  context, input
 ) => {
   const { user } = input.props as { user: TUser;}
   const subscription = await fetchSubscription(user.id);
@@ -93,7 +93,7 @@ const withSubscription = (): TPipeGetServerSideProps => async (
 };
 
 const withAlbums = (): TPipeGetServerSideProps => async (
-  _, input
+  context, input
 ) => {
   const { user } = input.props as { user: TUser;}
   const albums = await fetchAlbums(user.id);
