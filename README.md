@@ -8,3 +8,5 @@
 [Example piped functions](https://github.com/vborodulin/using-pipe-nextjs-get-server-side-props/blob/main/ssr/pipes/index.ts)
 
 [Example getServerSideProps with pipe helper and parallel piped function execution](https://github.com/vborodulin/using-pipe-nextjs-get-server-side-props/blob/main/pages/index.tsx)
+
+For better explanation you can read [my article](https://dev.to/vborodulin/using-pipes-in-nextjs-getserversideprops-3jn1).
